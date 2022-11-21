@@ -7,10 +7,10 @@ function Landing() {
       <div className="space-y-8">
         <h1 className="space-y-3 text-5xl font-semibold tracking-wide lg:text-6xl xl:text-7xl">
           <span className="block bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent">
-            Powered
+            Lorem
           </span>
-          <span className="block">by Intellect</span>
-          <span className="block">Driven by Values</span>
+          <span className="block">ipsum dolor</span>
+          <span className="block">sit amet</span>
         </h1>
 
         <div className="space-x-8">
