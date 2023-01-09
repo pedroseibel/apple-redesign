@@ -1,6 +1,5 @@
 import { ShoppingBagIcon } from "@heroicons/react/outline";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectCartItems, selectCartTotal } from "../redux/cartSlice";
 
