@@ -6,6 +6,7 @@ import { Tab } from "@headlessui/react";
 import { fetchCategories } from "../utils/fetchCategories";
 import { fetchProducts } from "../utils/fetchProducts";
 import Product from "../components/Product";
+import Cart from "../components/Cart";
 
 interface Props {
   categories: Category[];
@@ -16,7 +17,7 @@ const Home = ({ categories, products }: Props) => {
   const showProducts = (category: number) => {
     return products
       .filter((product) => product.category._ref === categories[category]._id)
-      .map((product) => <Product product={product} key={product._id}/>); //Filter products by category
+      .map((product) => <Product product={product} key={product._id} />); //Filter products by category
   };
 
   return (
@@ -27,6 +28,8 @@ const Home = ({ categories, products }: Props) => {
       </Head>
 
       <Header />
+
+      <Cart />
 
       <main className="relative h-[200vh] bg-[#e7ecee]">
         <Landing />
