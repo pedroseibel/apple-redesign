@@ -1,16 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import {
-  SearchIcon,
-  ShoppingBagIcon,
-  UserIcon,
-} from "@heroicons/react/outline/";
+import { SearchIcon, ShoppingBagIcon, UserIcon } from "@heroicons/react/outline/";
 import { selectCartItems } from "../redux/cartSlice";
 import { useSelector } from "react-redux";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 function Header() {
-  const session = false;
+  const { data: session } = useSession();
   const items = useSelector(selectCartItems);
 
   return (
@@ -18,11 +15,7 @@ function Header() {
       <div className="flex items-center justify-center md:w-1/5">
         <Link href="/">
           <div className="relative h-10 w-5 cursor-pointer opacity-75 transition hover:opacity-100">
-            <Image fill
-              src="https://rb.gy/vsvv2o"
-              alt="Apple Logo"
-              style={{objectFit:"contain"}}
-            />
+            <Image fill src="https://rb.gy/vsvv2o" alt="Apple Logo" style={{ objectFit: "contain" }} />
           </div>
         </Link>
       </div>
@@ -49,18 +42,15 @@ function Header() {
 
         {session ? (
           <Image
-            src={""}
+            src={session.user?.image || ""}
             alt=""
             className="cursor-pointer rounded-full"
             width={34}
             height={34}
-            /* onClick={() => signOut()} */
+            onClick={() => signOut()}
           />
         ) : (
-          <UserIcon
-            className="headerIcon"
-            //   onClick={() => signIn()}
-          />
+          <UserIcon className="headerIcon" onClick={() => signIn()} />
         )}
       </div>
     </header>
