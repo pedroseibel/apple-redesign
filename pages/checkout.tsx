@@ -16,9 +16,7 @@ function Checkout() {
   const items = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
   const router = useRouter();
-  const [groupedItemsInCart, setGroupedItemsInCart] = useState(
-    {} as { [key: string]: Product[] }
-  );
+  const [groupedItemsInCart, setGroupedItemsInCart] = useState({} as { [key: string]: Product[] });
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -33,12 +31,9 @@ function Checkout() {
   const createCheckoutSession = async () => {
     setLoading(true);
 
-    const checkoutSession: Stripe.Checkout.Session = await fetchPostJSON(
-      "/api/checkout_sessions",
-      {
-        items: items,
-      }
-    );
+    const checkoutSession: Stripe.Checkout.Session = await fetchPostJSON("/api/checkout_sessions", {
+      items: items,
+    });
 
     // Internal Server Error
     if ((checkoutSession as any).statusCode === 500) {
@@ -71,12 +66,7 @@ function Checkout() {
           </h1>
           <p className="my-4">Free delivery and returns.</p>
 
-          {items.length === 0 && (
-            <Button
-              title="Continue Shopping"
-              onClick={() => router.push("/")}
-            />
-          )}
+          {items.length === 0 && <Button title="Continue Shopping" onClick={() => router.push("/")} />}
         </div>
         {items.length > 0 && (
           <div className="mx-5 md:mx-8">
@@ -116,9 +106,7 @@ function Checkout() {
               </div>
 
               <div className="my-14 space-y-4">
-                <h4 className="text-xl font-semibold">
-                  How would you like to check out?
-                </h4>
+                <h4 className="text-xl font-semibold">How would you like to check out?</h4>
                 <div className="flex flex-col gap-4 md:flex-row">
                   <div className="order-2 flex flex-1 flex-col items-center rounded-xl bg-gray-200 p-8 py-12 text-center">
                     <h4 className="mb-4 flex flex-col text-xl font-semibold">
@@ -130,8 +118,7 @@ function Checkout() {
                     </h4>
                     <Button title="Check out with Apple Card Monthly Installments" />
                     <p className="mt-2 max-w-[240px] text-[13px]">
-                      $0.00 due today, which includes applicable full-price
-                      items, down payments, shipping, and taxes.
+                      $0.00 due today, which includes applicable full-price items, down payments, shipping, and taxes.
                     </p>
                   </div>
 
@@ -143,13 +130,7 @@ function Checkout() {
                       </span>
                     </h4>
 
-                    <Button
-                      noIcon
-                      loading={loading}
-                      title="Check Out"
-                      width="w-full"
-                      onClick={createCheckoutSession}
-                    />
+                    <Button noIcon loading={loading} title="Check Out" width="w-full" onClick={createCheckoutSession} />
                   </div>
                 </div>
               </div>

@@ -44,7 +44,7 @@ function Success({ products }: Props) {
       <header className="mx-auto max-w-xl">
         <Link href="/">
           <div className="relative ml-4 h-16 w-8 cursor-pointer transition lg:hidden">
-            <Image objectFit="contain" layout="fill" src="https://rb.gy/vsvv2o" alt="Apple Logo" />
+            <Image style={{ objectFit: "contain" }} fill src="https://rb.gy/vsvv2o" alt="Apple Logo" />
           </div>
         </Link>
       </header>
@@ -53,7 +53,7 @@ function Success({ products }: Props) {
         <section className="order-2 mx-auto max-w-xl pb-12 lg:col-span-5 lg:mx-0 lg:max-w-none lg:pr-16 lg:pt-16 xl:pl-16 2xl:pl-44">
           <Link href="/">
             <div className="relative ml-14 hidden h-24 w-12 cursor-pointer transition lg:inline-flex">
-              <Image objectFit="contain" layout="fill" src="https://rb.gy/vsvv2o" alt="Apple Logo" />
+              <Image style={{ objectFit: "contain" }} fill src="https://rb.gy/vsvv2o" alt="Apple Logo" />
             </div>
           </Link>
 
@@ -126,7 +126,7 @@ function Success({ products }: Props) {
                     <div key={product.id} className="flex items-center space-x-4 text-sm font-medium">
                       <div className="relative flex h-16 w-16 items-center justify-center rounded-md border border-gray-300 bg-[#f1f1f1] text-xs text-white">
                         <div className="relative h-7 w-7 animate-bounce rounded-md">
-                          <Image layout="fill" objectFit="contain" src="https://rb.gy/vsvv2o" alt="" />
+                          <Image fill style={{ objectFit: "contain" }} src="https://rb.gy/vsvv2o" alt="" />
                         </div>
                         <div className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-[gray] text-xs">
                           {product.quantity}
