@@ -25,7 +25,7 @@ function CheckoutProduct({ id, items }: Props) {
   return (
     <div className="flex flex-col gap-x-4 border-b border-gray-300 pb-5 lg:flex-row lg:items-center">
       <div className="relative h-44 w-44">
-        <Image fill src={urlFor(items[0].image[0]).url()} alt=""/>
+        <Image layout="fill" src={urlFor(items[0].image[0]).url()} alt="" />
       </div>
       <div className="flex flex-1 items-end lg:items-center">
         <div className="flex-1 space-y-4">
@@ -43,15 +43,9 @@ function CheckoutProduct({ id, items }: Props) {
         </div>
         <div className="flex flex-col items-end space-y-4">
           <h4 className="text-xl font-semibold lg:text-2xl">
-            <Currency
-              quantity={items.reduce((total, item) => total + item.price, 0)}
-              currency="USD"
-            />
+            <Currency quantity={items.reduce((total, item) => total + item.price, 0)} currency="USD" />
           </h4>
-          <button
-            onClick={removeItemFromCart}
-            className="text-blue-500 hover:underline"
-          ></button>
+          <button onClick={removeItemFromCart} className="text-blue-500 hover:underline"></button>
         </div>
       </div>
     </div>

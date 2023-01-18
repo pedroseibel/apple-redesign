@@ -1,12 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  CheckIcon,
-  ChevronDownIcon,
-  ChevronUpIcon,
-  ShoppingCartIcon,
-} from "@heroicons/react/outline";
+import { CheckIcon, ChevronDownIcon, ChevronUpIcon, ShoppingCartIcon } from "@heroicons/react/outline";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Button from "../components/Button";
@@ -25,10 +20,7 @@ function Success({ products }: Props) {
   const { session_id } = router.query;
   const [mounted, setMounted] = useState(false);
   const [showOrderSummary, setShowOrderSummary] = useState(false);
-  const subtotal = products.reduce(
-    (acc, product) => acc + product.price.unit_amount / 100,
-    0
-  );
+  const subtotal = products.reduce((acc, product) => acc + product.price.unit_amount / 100, 0);
   const { data: session } = useSession();
 
   useEffect(() => {
@@ -52,12 +44,7 @@ function Success({ products }: Props) {
       <header className="mx-auto max-w-xl">
         <Link href="/">
           <div className="relative ml-4 h-16 w-8 cursor-pointer transition lg:hidden">
-            <Image
-              style={{ objectFit: "contain" }}
-              fill
-              src="https://rb.gy/vsvv2o"
-              alt="Apple Logo"
-            />
+            <Image objectFit="contain" layout="fill" src="https://rb.gy/vsvv2o" alt="Apple Logo" />
           </div>
         </Link>
       </header>
@@ -66,12 +53,7 @@ function Success({ products }: Props) {
         <section className="order-2 mx-auto max-w-xl pb-12 lg:col-span-5 lg:mx-0 lg:max-w-none lg:pr-16 lg:pt-16 xl:pl-16 2xl:pl-44">
           <Link href="/">
             <div className="relative ml-14 hidden h-24 w-12 cursor-pointer transition lg:inline-flex">
-              <Image
-                style={{ objectFit: "contain" }}
-                fill
-                src="https://rb.gy/vsvv2o"
-                alt="Apple Logo"
-              />
+              <Image objectFit="contain" layout="fill" src="https://rb.gy/vsvv2o" alt="Apple Logo" />
             </div>
           </Link>
 
@@ -80,13 +62,8 @@ function Success({ products }: Props) {
               <CheckIcon className="h-8 w-8" />
             </div>
             <div>
-              <p className="text-sm text-gray-600">
-                Order #{session_id?.slice(-5)}
-              </p>
-              <h4 className="text-lg">
-                Thank you,{" "}
-                {session ? session.user?.name?.split(" ")[0] : "Guest"}!
-              </h4>
+              <p className="text-sm text-gray-600">Order #{session_id?.slice(-5)}</p>
+              <h4 className="text-lg">Thank you, {session ? session.user?.name?.split(" ")[0] : "Guest"}!</h4>
             </div>
           </div>
 
@@ -94,23 +71,19 @@ function Success({ products }: Props) {
             <div className="space-y-2 pb-3">
               <p>Your order is confirmed.</p>
               <p className="text-sm text-gray-600">
-                We’ve received your order, and we’re getting it ready. Come back
-                to this page for updates on your shipment status.
+                We’ve received your order, and we’re getting it ready. Come back to this page for updates on your
+                shipment status.
               </p>
             </div>
             <div className="pt-3 text-sm">
-              <p className="font-medium text-gray-600">
-                Other tracking number:
-              </p>
+              <p className="font-medium text-gray-600">Other tracking number:</p>
               <p>PRS1192487</p>
             </div>
           </div>
 
           <div className="my-4 mx-4 space-y-2 rounded-md border border-gray-300 p-4 lg:ml-14">
             <p>Order updates</p>
-            <p className="text-sm text-gray-600">
-              You’ll get shipping and delivery updates by e-mail and text.
-            </p>
+            <p className="text-sm text-gray-600">You’ll get shipping and delivery updates by e-mail and text.</p>
           </div>
 
           <div className="mx-4 flex flex-col items-center justify-between text-sm lg:ml-14 lg:flex-row">
@@ -128,16 +101,9 @@ function Success({ products }: Props) {
 
         {mounted && (
           <section className="overflow-y-scroll border-y border-l border-gray-300 bg-[#fafafa] lg:order-2 lg:col-span-4 lg:h-screen lg:border-y-0">
-            <div
-              className={`w-full ${
-                showOrderSummaryCondition && "border-b"
-              } border-gray-300 text-sm lg:hidden`}
-            >
+            <div className={`w-full ${showOrderSummaryCondition && "border-b"} border-gray-300 text-sm lg:hidden`}>
               <div className="mx-auto flex max-w-xl items-center justify-between px-4 py-6">
-                <button
-                  onClick={handleShowOrderSummary}
-                  className="flex items-center space-x-2"
-                >
+                <button onClick={handleShowOrderSummary} className="flex items-center space-x-2">
                   <ShoppingCartIcon className="h-6 w-6" />
                   <p>Show order summary</p>
                   {showOrderSummaryCondition ? (
@@ -157,18 +123,10 @@ function Success({ products }: Props) {
               <div className="mx-auto max-w-xl divide-y border-gray-300 px-4 py-4 lg:mx-0 lg:max-w-lg lg:px-10 lg:py-16">
                 <div className="space-y-4 pb-4">
                   {products.map((product) => (
-                    <div
-                      key={product.id}
-                      className="flex items-center space-x-4 text-sm font-medium"
-                    >
+                    <div key={product.id} className="flex items-center space-x-4 text-sm font-medium">
                       <div className="relative flex h-16 w-16 items-center justify-center rounded-md border border-gray-300 bg-[#f1f1f1] text-xs text-white">
                         <div className="relative h-7 w-7 animate-bounce rounded-md">
-                          <Image
-                            fill
-                            style={{ objectFit: "contain" }}
-                            src="https://rb.gy/vsvv2o"
-                            alt=""
-                          />
+                          <Image layout="fill" objectFit="contain" src="https://rb.gy/vsvv2o" alt="" />
                         </div>
                         <div className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-[gray] text-xs">
                           {product.quantity}
@@ -176,10 +134,7 @@ function Success({ products }: Props) {
                       </div>
                       <p className="flex-1">{product.description}</p>
                       <p>
-                        <Currency
-                          quantity={product.price.unit_amount / 100}
-                          currency={product.currency}
-                        />
+                        <Currency quantity={product.price.unit_amount / 100} currency={product.currency} />
                       </p>
                     </div>
                   ))}
@@ -222,9 +177,7 @@ function Success({ products }: Props) {
 
 export default Success;
 
-export const getServerSideProps: GetServerSideProps<Props> = async ({
-  query,
-}) => {
+export const getServerSideProps: GetServerSideProps<Props> = async ({ query }) => {
   const sessionId = query.session_id as string;
   const products = await fetchLineItems(sessionId);
 
